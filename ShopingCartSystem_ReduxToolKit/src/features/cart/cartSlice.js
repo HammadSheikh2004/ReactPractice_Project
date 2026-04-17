@@ -45,9 +45,19 @@ const cartSlice = createSlice({
                 state.totalPrice = 0;
                 state.totalQuantity = 0;
             }
+        },
+        increaseItem: (state, action) => {
+            let id = action.payload;
+            let item = state.cartItems.find(i => i.id === id);
+            if (item) {
+                item.quantity++;
+                item.totalPrice += item.price;
+                state.totalQuantity++;
+                state.totalPrice += item.price;
+            }
         }
     }
 });
 
-export const { addToCart, removeToCart } = cartSlice.actions;
+export const { addToCart, removeToCart, increaseItem } = cartSlice.actions;
 export default cartSlice.reducer;
