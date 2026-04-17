@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaTrash } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux'
-import { increaseItem, removeToCart } from './cartSlice';
+import { decreseItem, increaseItem, removeToCart } from './cartSlice';
 
 const Cart = () => {
     const { cartItems, totalQuantity, totalPrice } = useSelector(state => state.cart);
@@ -37,7 +37,7 @@ const Cart = () => {
                                         <td className="py-3 px-4 text-center">
                                             <button className='font-bold text-2xl gap-2' onClick={() => dispatch(increaseItem(item.id))}>+</button>
                                             {item.quantity}
-
+                                            <button className='font-bold text-2xl gap-2' onClick={() => dispatch(decreseItem(item.id))}>-</button>
                                         </td>
                                         <td className="py-3 px-4 text-center">${item.price}</td>
                                         <td className="py-3 px-4 text-center font-semibold text-green-600">
